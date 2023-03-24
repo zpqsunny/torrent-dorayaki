@@ -1,0 +1,11 @@
+
+# IDE
+.idea
+.DS_Store
+
+/dist
+/chrome/favicon.ico
+/chrome/index.html
+/chrome/assets/
+
+

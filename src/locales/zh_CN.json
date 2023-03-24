@@ -1,0 +1,18 @@
+{
+  "language": "语言",
+  "home": "首页",
+  "search": "搜索",
+  "how_to_use": "如何使用",
+  "about": "关于",
+  "information": "详情",
+  "name": "名称",
+  "hash": "哈希",
+  "size": "大小",
+  "file_number": "文件数量",
+  "magnet": "磁力链",
+  "created_date_time": "收录日期",
+  "highlight_sort": "默认排序",
+  "size_sort": "文件大小倒序",
+  "file_number_sort": "文件数倒序",
+  "created_date_time_sort": "收录时间倒序"
+}

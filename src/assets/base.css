@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.highlight {
+  color: red;
+}
+
+.ant-descriptions-title {
+  white-space: normal !important;
+}

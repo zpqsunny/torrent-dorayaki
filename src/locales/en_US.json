@@ -1,0 +1,19 @@
+{
+  "language": "Language",
+  "home": "Home",
+  "search": "Search",
+  "how_to_use": "How to use",
+  "about": "About",
+  "information": "Information",
+  "name": "name",
+  "hash": "Hash",
+  "size": "Size",
+  "file_number": "File Number",
+  "magnet": "Magnet",
+  "created_date_time": "Created DateTime",
+  "highlight_sort": "Default Desc",
+  "size_sort": "Size Desc",
+  "file_number_sort": "File Desc",
+  "created_date_time_sort": "Time Desc"
+}
+
