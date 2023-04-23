@@ -56,12 +56,12 @@
 
 <script lang="ts">
 
-import {defineComponent, ref, reactive,} from "vue";
+import {defineComponent, ref, reactive,} from "vue"
 import {useRouter, useRoute} from 'vue-router'
 import {useI18n} from "vue-i18n"
-import SearchIcon from "../components/icon/SearchIcon.vue";
-import axios from "../axios";
-import utils from '../utils'
+import SearchIcon from "../components/icon/SearchIcon.vue"
+import axios from "../axios.js"
+import utils from '../utils.js'
 
 interface SearchResult {
   id: string,

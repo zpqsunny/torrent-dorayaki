@@ -30,7 +30,7 @@
       </a-menu>
     </a-layout-header>
     <a-layout>
-      <a-layout-content style="overflow-y: scroll">
+      <a-layout-content>
         <a-spin :spinning="store.loading" tip="Loading..." size="large">
           <router-view v-slot="{Component}">
             <transition>
