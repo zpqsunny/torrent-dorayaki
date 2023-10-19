@@ -60,8 +60,8 @@
 import { defineComponent, ref } from "vue";
 import SearchIcon from "../components/icon/SearchIcon.vue";
 import { useRouter, useRoute } from 'vue-router';
-import axios from "../axios";
-import utils from '../utils';
+import axios from "../axios.js";
+import utils from '../utils.js';
 
 
 interface File {

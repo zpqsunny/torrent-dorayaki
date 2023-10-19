@@ -23,7 +23,7 @@ axios.interceptors.response.use(response => {
 
   store.loading = false
   console.error(error)
-  message.error('服务器繁忙')
+  message.error(error.code + ' ' + error.message)
   return Promise.reject(error);
 })
 

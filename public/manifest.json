@@ -1,0 +1,13 @@
+{
+  "name": "Torrent Dorayaki",
+  "short_name": "Torrent",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "http://sc.adminbuy.cn/static/upload/image/20230705/1688529714414316.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
