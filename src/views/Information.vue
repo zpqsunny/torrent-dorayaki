@@ -44,11 +44,16 @@
             </a-descriptions-item>
           </a-descriptions>
           <a-divider dashed />
-          <a-directory-tree :tree-data="treeify(files)">
-            <template #title="{ title, key, type, length }">
-              <span style="word-break: break-all;word-wrap: break-word">{{ title }}</span><span v-if="type === 'file'" style="float: right"><i>{{ utils.renderSize(length) }}</i></span>
+          <a-list size="small" bordered :data-source="files">
+            <template #renderItem="{ item }">
+              <a-list-item>
+                <template #actions>
+                  <i>{{ utils.renderSize(item.length) }}</i>
+                </template>
+                {{ item.path.join(' / ') }}
+              </a-list-item>
             </template>
-          </a-directory-tree>
+          </a-list>
         </a-col>
       </a-row>
     </a-card>
@@ -71,7 +76,7 @@ interface File {
 
 export default defineComponent({
   name: 'Information',
-  components: {SearchIcon},
+  components: { SearchIcon },
   mounted() {
     const route = useRoute()
     this.torrentInformation(route.params.id)
@@ -102,25 +107,23 @@ export default defineComponent({
     }
   },
   methods: {
-    torrentInformation(id) {
-      axios.get('/information/' + id)
-          .then(r => {
-            if (r.data.code === 200) {
-              this.hash = r.data.data.hash
-              this.name = r.data.data.name
-              if (r.data.data.files != undefined) {
-                this.files = r.data.data.files
-              } else {
-                this.files = [{
-                  length: r.data.data.size,
-                  path: [r.data.data.name]
-                }]
-              }
-              this.size = r.data.data.size
-              this.fileNumber = r.data.data.fileNumber
-              this.createdDateTime = r.data.data.createdDateTime
-            }
-          })
+    async torrentInformation(id) {
+      const r = await axios.get('/information/' + id)
+      if (r.data.code === 200) {
+        this.hash = r.data.data.hash
+        this.name = r.data.data.name
+        if (r.data.data.files != undefined) {
+          this.files = r.data.data.files
+        } else {
+          this.files = [{
+            length: r.data.data.size,
+            path: [r.data.data.name]
+          }]
+        }
+        this.size = r.data.data.size
+        this.fileNumber = r.data.data.fileNumber
+        this.createdDateTime = r.data.data.createdDateTime
+      }
     },
     treeify(paths) {
       let result = []
