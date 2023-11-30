@@ -51,13 +51,12 @@
   </a-layout>
 </template>
 
-<script lang="ts">
+<script>
 import {GithubOutlined, AlipayOutlined, QuestionOutlined, SearchOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons-vue';
-import {defineComponent, onMounted, ref} from "vue";
-import {useCounterStore} from '../stores/counter.js'
-import LanguageIcon from "../components/icon/LanguageIcon.vue";
-import SearchIcon from "../components/icon/SearchIcon.vue";
-const store = useCounterStore()
+import {defineComponent} from 'vue';
+import LanguageIcon from '../components/icon/LanguageIcon.vue';
+import SearchIcon from '../components/icon/SearchIcon.vue';
+import {useCounterStore} from "@/stores/counter";
 
 
 export default defineComponent({
@@ -72,20 +71,16 @@ export default defineComponent({
     LanguageIcon,
     SearchIcon,
   },
+  data() {
+    return {
+      store: useCounterStore()
+    }
+  },
   mounted() {
     let i18n = localStorage.getItem('i18n')
     if (i18n != null) {
       this.$i18n.locale = i18n
       document.documentElement.lang = i18n.slice(0,2)
-    }
-  },
-  setup() {
-    const store = useCounterStore()
-    const current = ref<string[]>(['mail']);
-    return {
-      selectedKeys: ref<string[]>(['2']),
-      store,
-      current
     }
   },
   methods: {

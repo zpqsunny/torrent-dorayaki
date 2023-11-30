@@ -54,94 +54,72 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
-import {defineComponent, ref, reactive,} from "vue"
-import {useRouter, useRoute} from 'vue-router'
-import {useI18n} from "vue-i18n"
-import SearchIcon from "../components/icon/SearchIcon.vue"
-import axios from "../axios.js"
+import {defineComponent} from 'vue'
+import SearchIcon from '../components/icon/SearchIcon.vue'
+import axios from '../axios.js'
 import utils from '../utils.js'
-
-interface SearchResult {
-  id: string,
-  highlight: string,
-  name: string,
-  size: number,
-  fileNumber: number,
-  createdDateTime: string
-}
 
 export default defineComponent({
   name: 'Home',
   components: {
     SearchIcon
   },
-  setup() {
-    const { t } = useI18n()
-    const router = useRouter()
-    const route = useRoute()
-    const query = reactive({
-      keyWords: '',
-      page: 1,
-      pageSize: 20,
-      sort: 'desc',
-      orderColumn: '_score',
-    })
-    const sortType = ref<string>('highlight')
-    let total = ref<number>(0)
-    const columns = [
-      {
-        key: 'highlight',
-        dataIndex: 'highlight',
-        title: () => t('name'),
-      },
-      {
-        key: 'size',
-        dataIndex: 'size',
-        title: () => t('size'),
-        minWidth: 100
-      },
-      {
-        key: 'fileNumber',
-        dataIndex: 'fileNumber',
-        title: () => t('file_number'),
-        minWidth: 100
-      },
-      {
-        key: 'createdDateTime',
-        dataIndex: 'createdDateTime',
-        title: () => t('created_date_time'),
-        minWidth: 120
-      }
-    ]
-    let searchResult = ref<SearchResult[]>([])
+  data() {
     return {
+      query: {
+        keyWords: '',
+        page: 1,
+        pageSize: 20,
+        sort: 'desc',
+        orderColumn: '_score',
+      },
+      sortType: 'highlight',
+      total: 0,
+      columns: [
+        {
+          key: 'highlight',
+          dataIndex: 'highlight',
+          title: () => this.$t('name'),
+        },
+        {
+          key: 'size',
+          dataIndex: 'size',
+          title: () => this.$t('size'),
+          minWidth: 100
+        },
+        {
+          key: 'fileNumber',
+          dataIndex: 'fileNumber',
+          title: () => this.$t('file_number'),
+          minWidth: 100
+        },
+        {
+          key: 'createdDateTime',
+          dataIndex: 'createdDateTime',
+          title: () => this.$t('created_date_time'),
+          minWidth: 120
+        }
+      ],
+      searchResult: [],
       utils,
-      router,
-      route,
-      query,
-      total,
-      sortType,
-      columns,
-      searchResult,
     }
   },
   methods: {
-    onSearch(p: number, ps: number) {
-      this.query.page = p
-      this.query.pageSize = ps
+    async onSearch(page, pageSize) {
+      this.query.page = page
+      this.query.pageSize = pageSize
       if (this.query.keyWords.trim() === '') {
         return
       }
-      axios.post('/search', this.query)
-          .then(r => {
-            if (r.data.code === 200) {
-              this.query.page = r.data.data.page
-              this.total = r.data.data.total
-              this.searchResult = r.data.data.content
-            }
-          })
+      const r = await axios.post('/search', this.query)
+      if (r.data.code !== 200) {
+        return
+      }
+      this.query.page = r.data.data.page
+      this.total = r.data.data.total
+      this.searchResult = r.data.data.content
     },
     sortChange(e) {
       if ('highlight' === this.sortType) {

@@ -50,7 +50,7 @@
                 <template #actions>
                   <i>{{ utils.renderSize(item.length) }}</i>
                 </template>
-                {{ item.path.join(' / ') }}
+                {{ item.path.join('/') }}
               </a-list-item>
             </template>
           </a-list>
@@ -60,51 +60,29 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
-import { defineComponent, ref } from "vue";
-import SearchIcon from "../components/icon/SearchIcon.vue";
-import { useRouter, useRoute } from 'vue-router';
-import axios from "../axios.js";
+import { defineComponent } from 'vue';
+import SearchIcon from '../components/icon/SearchIcon.vue';
+import axios from '../axios.js';
 import utils from '../utils.js';
-
-
-interface File {
-  length: number;
-  path: [string];
-}
 
 export default defineComponent({
   name: 'Information',
   components: { SearchIcon },
-  mounted() {
-    const route = useRoute()
-    this.torrentInformation(route.params.id)
-  },
-  setup() {
-    const router = useRouter()
-    const route = useRoute()
-    const id = ref(route.query.id)
-    const hash = ref<string>('')
-    const name = ref<string>('')
-    const files = ref<[File]>([])
-    const size = ref<number>(0)
-    const fileNumber = ref<number>(0)
-    const createdDateTime = ref<string>('')
-    const treeFiles = ref<[File]>([])
+  data() {
     return {
+      hash: '',
+      name: '',
+      files: [],
+      size: 0,
+      fileNumber: 0,
+      createdDateTime: '',
       utils,
-      // router,
-      // route,
-      id,
-      hash,
-      name,
-      files,
-      size,
-      fileNumber,
-      createdDateTime,
-      treeFiles,
     }
+  },
+  mounted() {
+    this.torrentInformation(this.$route.params.id)
   },
   methods: {
     async torrentInformation(id) {
@@ -112,7 +90,7 @@ export default defineComponent({
       if (r.data.code === 200) {
         this.hash = r.data.data.hash
         this.name = r.data.data.name
-        if (r.data.data.files != undefined) {
+        if (r.data.data.files !== undefined) {
           this.files = r.data.data.files
         } else {
           this.files = [{
