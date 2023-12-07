@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
 
   console.log('onInstalled');
-  fetch('https://gitee.com/zpqsunny/dht/raw/main/README.md',{
+  fetch('https://gitee.com/zpqsunny/jiaoyi/raw/master/README.md',{
     method: 'GET'
   }).then(v => {
     return v.text();
