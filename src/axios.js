@@ -5,6 +5,10 @@ const store = useCounterStore()
 axios.defaults.baseURL = 'http://t.conn.ltd:8080'
 // axios.defaults.baseURL = 'http://127.0.0.1:8000'
 
+chrome?.storage?.local?.get(['NEW_SERVICE_URL'], value => {
+  axios.defaults.baseURL = value['NEW_SERVICE_URL']
+})
+
 axios.interceptors.request.use(config => {
 
   store.loading = true
