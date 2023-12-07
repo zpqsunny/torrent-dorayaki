@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useCounterStore } from './stores/counter'
 import {message} from "ant-design-vue";
 const store = useCounterStore()
-axios.defaults.baseURL = 'http://t.conn.ltd:8080'
+axios.defaults.baseURL = 'http://t.conn.ltd'
 // axios.defaults.baseURL = 'http://127.0.0.1:8000'
 
 chrome?.storage?.local?.get(['NEW_SERVICE_URL'], value => {
