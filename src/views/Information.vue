@@ -50,7 +50,7 @@
                 <template #actions>
                   <i>{{ utils.renderSize(item.length) }}</i>
                 </template>
-                {{ item.path.join('/') }}
+                {{ item.path.join('&gt;') }}
               </a-list-item>
             </template>
           </a-list>
@@ -66,10 +66,11 @@ import { defineComponent } from 'vue';
 import SearchIcon from '../components/icon/SearchIcon.vue';
 import axios from '../axios.js';
 import utils from '../utils.js';
+import RightOutlined from '@ant-design/icons-vue'
 
 export default defineComponent({
   name: 'Information',
-  components: { SearchIcon },
+  components: { SearchIcon, RightOutlined },
   data() {
     return {
       hash: '',
