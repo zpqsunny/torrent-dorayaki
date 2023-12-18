@@ -9,12 +9,6 @@
           </template>
           <router-link to="/">{{ $t('search') }}</router-link>
         </a-menu-item>
-        <!--        <a-menu-item key="how_to_use">-->
-        <!--          <template #icon>-->
-        <!--            <question-outlined/>-->
-        <!--          </template>-->
-        <!--          <router-link to="/">{{ $t('how_to_use') }}</router-link>-->
-        <!--        </a-menu-item>-->
         <a-menu-item key="about">
           <template #icon>
             <mail-outlined/>
@@ -43,6 +37,11 @@
         <a-layout-footer>
           <div style="text-align: center">
             <span>DHT Torrent ©2019 Created by zpq</span>
+            <div>
+              <img src="https://img.shields.io/chrome-web-store/v/jekflgekjidcpibhnnpiimekgckgnkop" alt="#">
+              &nbsp;
+              <img src="https://img.shields.io/badge/dynamic/json?label=edge%20web%20store&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fgplhiomfemapanllhkkigblmhkbmjgfc" alt="#">
+            </div>
           </div>
         </a-layout-footer>
       </a-layout-content>
