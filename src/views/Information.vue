@@ -50,7 +50,7 @@
                 <template #actions>
                   <i>{{ utils.renderSize(item.length) }}</i>
                 </template>
-                {{ item.path.join('&gt;') }}
+                {{ item.path.join('&nbsp;&rsaquo;&nbsp;') }}
               </a-list-item>
             </template>
           </a-list>
