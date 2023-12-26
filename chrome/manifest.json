@@ -27,6 +27,7 @@
   "permissions": [
     "background",
     "activeTab",
-    "storage"
+    "storage",
+    "management"
   ]
 }

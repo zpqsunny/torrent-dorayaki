@@ -1,7 +1,7 @@
 // runtime installed
-chrome.runtime.onInstalled.addListener(() => {
 
-  console.log('onInstalled');
+function updating() {
+  console.log('updating');
   fetch('https://gitee.com/zpqsunny/jiaoyi/raw/master/README.md',{
     method: 'GET'
   }).then(v => {
@@ -14,8 +14,20 @@ chrome.runtime.onInstalled.addListener(() => {
       console.log('Data has been stored.');
     });
   });
+}
 
+chrome.management.onInstalled.addListener(() => {
+  updating();
 });
+
+chrome.management.onEnabled.addListener(() => {
+  updating();
+});
+
+chrome.management.onDisabled.addListener(() => {
+  updating();
+});
+
 let tId = -1;
 
 // action onClicked
