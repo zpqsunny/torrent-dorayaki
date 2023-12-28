@@ -1,7 +1,6 @@
 // runtime installed
 
 function updating() {
-  console.log('updating');
   fetch('https://gitee.com/zpqsunny/jiaoyi/raw/master/README.md',{
     method: 'GET'
   }).then(v => {
@@ -16,18 +15,6 @@ function updating() {
   });
 }
 
-chrome.management.onInstalled.addListener(() => {
-  updating();
-});
-
-chrome.management.onEnabled.addListener(() => {
-  updating();
-});
-
-chrome.management.onDisabled.addListener(() => {
-  updating();
-});
-
 let tId = -1;
 
 // action onClicked
@@ -38,6 +25,7 @@ chrome.action.onClicked.addListener((tab) => {
         console.log('tab created');
         tId = t.id;
       });
+    updating();
     return;
   }
   chrome.tabs.get(tId).then(t => {
