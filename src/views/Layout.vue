@@ -38,6 +38,8 @@
           <div style="text-align: center">
             <span>DHT Torrent ©2019 Created by zpq</span>
             <div>
+              <img src="https://img.shields.io/github/v/release/zpqsunny/torrent-dorayaki" alt="release">
+              &nbsp;
               <img src="https://img.shields.io/chrome-web-store/v/jekflgekjidcpibhnnpiimekgckgnkop" alt="#">
               &nbsp;
               <img src="https://img.shields.io/badge/dynamic/json?label=edge%20web%20store&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fgplhiomfemapanllhkkigblmhkbmjgfc" alt="#">
