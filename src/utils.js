@@ -23,7 +23,7 @@ export default {
     let timestamp = value
     let now = Math.round(new Date().getTime() / 1000)
     if (value.toString().length === 13) {
-      timestamp = Number.parseInt(value.toString().substr(0, 10))
+      timestamp = Number.parseInt(value.toString().substring(0, 10))
     }
     let diff = now - timestamp
     let postfix = diff > 0 ? i18n.t('ago') : i18n.t('later')
