@@ -36,7 +36,7 @@
         </a-spin>
         <a-layout-footer>
           <div style="text-align: center">
-            <span>DHT Torrent ©2019 Created by zpq</span>
+            <span>DHT Torrent &copf; 2019 Created By ZPQ &reg; | <i>Version {{ version }}</i></span>
             <div>
               <img src="https://img.shields.io/github/v/release/zpqsunny/torrent-dorayaki" alt="release">
               &nbsp;
@@ -57,8 +57,8 @@ import {GithubOutlined, AlipayOutlined, QuestionOutlined, SearchOutlined, MailOu
 import {defineComponent} from 'vue';
 import LanguageIcon from '../components/icon/LanguageIcon.vue';
 import SearchIcon from '../components/icon/SearchIcon.vue';
-import {useCounterStore} from "@/stores/counter";
-
+import {useCounterStore} from '@/stores/counter';
+import { version } from '@/version';
 
 export default defineComponent({
   name: 'Layout',
@@ -74,7 +74,8 @@ export default defineComponent({
   },
   data() {
     return {
-      store: useCounterStore()
+      store: useCounterStore(),
+      version,
     }
   },
   mounted() {
