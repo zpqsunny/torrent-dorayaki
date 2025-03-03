@@ -2,8 +2,8 @@ import axios from 'axios'
 import { useCounterStore } from './stores/counter'
 import {message} from "ant-design-vue";
 const store = useCounterStore()
-axios.defaults.baseURL = 'https://ax.dorayaki.online'
-// axios.defaults.baseURL = 'http://127.0.0.1:8000'
+axios.defaults.baseURL = 'https://torrent.conn.ltd';
+// axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
 
 axios.interceptors.request.use(config => {
